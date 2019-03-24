@@ -26,7 +26,7 @@ router.register(r'posts', views.PostsViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.indexView.as_view()),
+    path('', views.indexView.as_view(), name="create_post"),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls',
                               namespace='rest_framework'))

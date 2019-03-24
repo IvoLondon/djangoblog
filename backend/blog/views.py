@@ -1,20 +1,17 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 from rest_framework import viewsets
 from blog.serializers import UserSerializer, GroupSerializer, PostsSerializer
 from blog.models import Posts, Comments
-from blog import forms
+from blog.forms import PostsForm
 
 
 # Create your views here.
-class indexView(TemplateView):
+class indexView(CreateView):
     template_name = 'index.html'
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(indexView, self).get_context_data(*args, **kwargs)
-        context['form'] = forms
-        return forms
+    form_class = PostsForm
+    success_url = '/api/'
 
 
 class UserViewSet(viewsets.ModelViewSet):
