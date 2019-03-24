@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from rest_framework import routers
-from django.urls import path, include
+from django.urls import path, re_path, include
 from blog import views
 
 router = routers.DefaultRouter()
@@ -28,6 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.indexView.as_view(), name="create_post"),
     path('api/', include(router.urls)),
+    re_path('api/posts/(?P<pk>[0-9]+)/$', views.SinglePostViewSet.as_view(), name="single_post"),
     path('api-auth/', include('rest_framework.urls',
                               namespace='rest_framework'))
 ]
