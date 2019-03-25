@@ -1,5 +1,7 @@
 django
 djangorestframework
+djangorestframework-jwt
+django-cors-headers
 markdown
 django-filter
-django-cors-headers
+pudb
