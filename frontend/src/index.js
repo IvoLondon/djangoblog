@@ -5,15 +5,19 @@ import * as serviceWorker from './serviceWorker';
 import { Route, BrowserRouter } from 'react-router-dom'
 
 import { Provider } from 'react-redux';
-import { createStore, compose } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import AuthReducer from './store/reducers/auth'
+//TODO: import saga
+import thunk from 'redux-thunk';
 
 import App from './App';
 import Signin from './components/Signin/Signin';
 import Signup from './components/Signup/Signup';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(AuthReducer, composeEnhancers())
+const store = createStore(AuthReducer, composeEnhancers(
+    applyMiddleware(thunk)
+))
 
 const routing = (
     <Provider store={store}>

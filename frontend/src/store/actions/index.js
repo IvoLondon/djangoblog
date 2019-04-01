@@ -1,5 +1,9 @@
 export {
-    userSignIn,
-    userSignOut,
-    userSignUp,
+    authLogin,
+    authLogout,
+    authFail,
+    authSignup,
+    authStart,
+    authSuccess,
+    authCheckState,
 } from './actionCreators/auth'
