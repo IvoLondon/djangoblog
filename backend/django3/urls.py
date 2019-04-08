@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from rest_framework import routers
-from rest_framework_jwt.views import obtain_jwt_token
 from django.urls import path, re_path, include
 from blog import views
 
@@ -27,15 +26,14 @@ router.register(r'posts', views.PostsViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
+    path('rest-auth/', include('rest_auth.urls')),
+    
     path('', views.indexView, name="create_post"),
     # path('list/', views.PostViewList.as_view(), name="list_posts"),
-    path('api/', include(router.urls)),
-    path('token-auth/', obtain_jwt_token),
+    path('about/', views.AboutInfo.as_view(), name='about'),
+    path('blog/', include('blog.urls')),
     re_path('api/posts/(?P<pk>[0-9]+)/$',
             views.SinglePostViewSet.as_view(),
             name="single_post"),
-    path('api-auth/', include('rest_framework.urls',
-                              namespace='rest_framework')),
-    
 ]
-

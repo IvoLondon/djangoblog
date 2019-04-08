@@ -1,20 +1,20 @@
-import React from 'react'
+import React from 'react';
 
 const Main = (props) => {
-  const posts = props.posts.map((post) => {
+    const posts = props.posts.map((post) => {
+        return (
+            <li key={post.id} onClick={() => props.getSinglePostHandler(post.id)}>
+                {post.title}
+            </li>
+        );
+    });
     return (
-      <li key={post.id} onClick={() => props.getSinglePostHandler(post.id)}>
-          {post.title}
-      </li>
-    )
-  })
-  return (
-      <div>
-        <ul>
+      <>
+        <ul className="posts-list">
             {posts}
         </ul>
-    </div>
-  )
-}
+      </>
+    );
+};
 
-export default Main
+export default Main;

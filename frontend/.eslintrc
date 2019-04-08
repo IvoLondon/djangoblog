@@ -1,0 +1,57 @@
+{
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "parser": "babel-eslint",
+    "plugins": [
+      "react"
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "env": {
+      "browser": true,
+      "amd": true,
+      "es6": true,
+      "node": true,
+      "jest": true
+    },
+    "rules": {
+      "no-shadow": "warn",
+      "array-callback-return": "warn",
+      "no-else-return": "warn",
+      "eqeqeq": "error",
+      "consistent-return": "warn",
+      "padded-blocks": ["warn", "never"],
+      "indent": ["warn", 4, {"SwitchCase": 1}],
+      "camelcase": "warn",
+      "prefer-const": "warn",
+      "semi": "warn",
+      "comma-dangle": ["warn", "always-multiline"],
+      "quotes": [ "warn", "single" ],
+      "no-undef": "error",
+      "global-strict": 0,
+      "no-extra-semi": "warn",
+      "no-underscore-dangle": 0,
+      "no-console": "warn",
+      "no-unused-vars": "error",
+      "no-trailing-spaces": ["warn", { "skipBlankLines": true }],
+      "no-unreachable": "error",
+      "no-alert": 0,
+      "object-curly-spacing": ["warn", "always"],
+      "react/prefer-stateless-function": "warn",
+      "react/jsx-first-prop-new-line": ["warn", "multiline"],
+      "react/jsx-uses-react": "warn",
+      "react/jsx-uses-vars": "warn",
+      "react/jsx-no-bind": ["warn", { "ignoreRefs": true }]
+    },
+    "globals": {
+    }
+  }

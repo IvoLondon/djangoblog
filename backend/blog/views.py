@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 # from django.db.models import Q
 from django.contrib.auth.models import User, Group
-from django.views.generic import TemplateView, CreateView, ListView
+from django.views.generic import TemplateView,  ListView, DetailView, CreateView, UpdateView, DeleteView
 from rest_framework import viewsets, generics, views
 from rest_framework.response import Response
 from blog.serializers import UserSerializer, GroupSerializer, PostsSerializer
@@ -34,7 +34,7 @@ class PostsViewSet(viewsets.ModelViewSet):
     queryset = Posts.objects.all()
     serializer_class = PostsSerializer
 
-
+  
 class SinglePostViewSet(views.APIView):
     """
     API endpoint that allows single to be viewed or edited.
@@ -52,11 +52,6 @@ class SinglePostViewSet(views.APIView):
 #     success_url = '/api/'
 
 
-# class PostViewList(ListView):
-#     model = Posts
-#     context_object_name = 'post_view_context'
-#     template_name = 'posts_list.html'
-
 # Combining IndexView and PostViewList
 def indexView(request):
     if request.method == 'POST':
@@ -69,3 +64,13 @@ def indexView(request):
     qs = Posts.objects.all()
     context = {'form': form, 'posts_list': qs, }
     return render(request, 'index.html', context)
+
+
+class AboutInfo(TemplateView):
+    template_name = "about.html"
+
+
+class ListPosts(ListView):
+    model = Posts
+    template_name = 'list.html'
+    context_object_name = 'list_context'

@@ -9,6 +9,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import AuthReducer from './store/reducers/auth'
 //TODO: import saga
 import thunk from 'redux-thunk';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import App from './App';
 import Signin from './components/Signin/Signin';
