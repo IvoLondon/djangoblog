@@ -36,4 +36,5 @@ urlpatterns = [
     re_path('api/posts/(?P<pk>[0-9]+)/$',
             views.SinglePostViewSet.as_view(),
             name="single_post"),
+    
 ]

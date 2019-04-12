@@ -3,8 +3,10 @@ from django.shortcuts import get_object_or_404
 # from django.db.models import Q
 from django.contrib.auth.models import User, Group
 from django.views.generic import TemplateView,  ListView, DetailView, CreateView, UpdateView, DeleteView
+
 from rest_framework import viewsets, generics, views
 from rest_framework.response import Response
+
 from blog.serializers import UserSerializer, GroupSerializer, PostsSerializer
 from blog.models import Posts, Comments
 from blog.forms import PostsForm
@@ -74,3 +76,14 @@ class ListPosts(ListView):
     model = Posts
     template_name = 'list.html'
     context_object_name = 'list_context'
+
+
+class SinglePost(DetailView):
+    model = Posts
+    template_name = 'single.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['test'] = 'just a test'
+        return context
+
